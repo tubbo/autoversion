@@ -23,8 +23,6 @@ jobs:
     steps:
       - uses: ./.github/actions/setup
       - run: yarn build
-      - run: |-
-          if [ -n "$(git status --porcelain dist/)" ]; then
-            echo "dist/ must be committed when sources change."
-            exit 1
-          fi
+      - uses: actions/upload-artifact@v4
+        with:
+          path: dist/

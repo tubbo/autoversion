@@ -1,7 +1,7 @@
 {
   "name": "autoversion",
-  "description": "A GitHub Action for automatically versioning and releasing code",
   "version": "0.0.0",
+  "private": true,
   "type": "module",
   "homepage": "https://tubbo.github.io/autoversion",
   "repository": {
@@ -9,6 +9,7 @@
     "url": "git+https://github.com/tubbo/autoversion.git"
   },
   "license": "MIT",
+  "main": "dist/index.js",
   "scripts": {
     "build": "ncc build action.ts --minify",
     "lint": "prettier --cache --check . && eslint . && tsc",
