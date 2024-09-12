@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=../docs/schema.json
+changelog:
+  exclude:
+    labels: [documentation]
+  categories:
+    - title: Breaking Changes
+      labels: [breaking]
+      version: major
+    - title: New Features
+      labels: [enhancement]
+      version: minor
+    - title: Bug Fixes
+      labels: [bug]
+      version: patch
+    - title: Dependency Updates
+      labels: [dependencies]
+      version: patch
+    - title: Other Changes
+      labels: ["*"]

@@ -1,0 +1,13 @@
+{
+  "exclude": ["/node_modules/", "dist/**"],
+  "include": ["**/*.ts"],
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "noEmit": true,
+    "paths": {
+      "@/*": ["./*"]
+    }
+  }
+}

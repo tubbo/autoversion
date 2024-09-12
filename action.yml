@@ -1,0 +1,26 @@
+name: Autoversion
+description: |
+  Generate versions based on your GitHub Automatic Release Notes Generation
+  configuration. This action will create a new release with generated notes
+  and apply a version based on the latest release and any unreleased pull
+  requests that have been merged matching the labels you specified in config.
+inputs:
+  draft:
+    description: Whether to mark the release as draft.
+    # type: boolean
+    default: "true"
+  channel:
+    description: Optional release channel for the release, starting with "v" and ending with ".x".
+outputs:
+  bump:
+    description: |
+      Release type of the version bump if one occurred. Can be "major",
+      "premajor", "minor", "preminor", "patch", "prepatch", or "pre". When
+      starting with "pre", that indicates this release was a prerelease.
+  last:
+    description: Last version to have been released
+  next:
+    description: Next version to be released
+runs:
+  using: "node20"
+  main: "action/dist/index.js"
