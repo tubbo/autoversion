@@ -20,21 +20,29 @@ export class Category extends Validated(Categorization) {
     this.config = config;
   }
 
-  get exclude() {
-    return new Exclude(this.value.exclude);
-  }
+  excludes(change: Changeset) {
+    // @ts-expect-error TS2339
+    const exclude = new Exclude(this.exclude ?? {});
 
-  get version() {
-    return this.value.version;
+    return this.config.excludes(change) || exclude.excludes(change);
   }
 
   includes(change: Changeset) {
-    return !this.config.excludes(change) && !this.exclude.excludes(change);
+    if (!this.excludes(change)) {
+      // @ts-expect-error TS2339
+      for (const label of this.labels) {
+        if (change.labels.includes(label)) return true;
+      }
+    }
+
+    return false;
   }
 
   supersedes(bump: ReleaseType) {
-    const current = RELEASE_TYPES.indexOf(bump);
-    const proposed = RELEASE_TYPES.indexOf(this.version);
+    const levels = RELEASE_TYPES.toReversed();
+    const current = levels.indexOf(bump);
+    // @ts-expect-error TS2339
+    const proposed = levels.indexOf(this.version);
 
     return proposed > current;
   }
