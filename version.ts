@@ -1,6 +1,7 @@
 import { ReleaseType, SemVer } from "semver";
 import { Config } from "./config.js";
 import type { Service, Changeset } from "./service.js";
+import { Category } from "./category.js";
 
 export class Version {
   readonly config: Config;
@@ -22,9 +23,12 @@ export class Version {
 
   get bump() {
     let bump: ReleaseType;
+    const categories = this.config.categories.map(
+      (category) => new Category(category, this.config),
+    );
 
     for (const change of this.changes) {
-      for (const category of this.config.categories) {
+      for (const category of categories) {
         if (category.includes(change) && category.supersedes(bump)) {
           bump = category.version;
         }
