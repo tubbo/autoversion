@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-issue-config.json
+blank_issues_enabled: false
+contact_links:
+  - name: Feature Requests
+    about: For feature requests, start a new discussion
+    url: https://github.com/tubbo/autoversion/discussions
