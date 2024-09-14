@@ -1,9 +1,5 @@
 name: Autoversion
-description: |
-  Generate versions based on your GitHub Automatic Release Notes Generation
-  configuration. This action will create a new release with generated notes
-  and apply a version based on the latest release and any unreleased pull
-  requests that have been merged matching the labels you specified in config.
+description: Automatic version generation based on your GitHub generated release notes.
 inputs:
   draft:
     description: Whether to mark the release as draft.
