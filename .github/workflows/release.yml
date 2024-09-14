@@ -1,8 +1,8 @@
 name: Release
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "0 18 * * MON" # every monday at 2pm eastern
+  # schedule:
+  # - cron: "0 18 * * MON" # every monday at 2pm eastern
 concurrency: ${{ github.workflow }}-${{ github.ref_name }}
 jobs:
   build:
