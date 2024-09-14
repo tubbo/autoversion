@@ -1,7 +1,12 @@
 # yaml-language-server: $schema=../docs/schema.json
 changelog:
   exclude:
-    labels: [documentation]
+    labels:
+      - documentation
+      - duplicate
+      - invalid
+    authors:
+      - github-actions[bot]
   categories:
     - title: Breaking Changes
       labels: [breaking]
