@@ -4,8 +4,7 @@ import { readFile } from "fs/promises";
 import { load } from "js-yaml";
 import { join } from "path";
 import { Exclude, Exclusion } from "./exclude.js";
-import { Categorization } from "./category.js";
-import { Changeset } from "./service.js";
+import { Category, Categorization } from "./category.js";
 
 const Configuration = z.object({
   exclude: z.optional(Exclusion),
@@ -47,6 +46,16 @@ export class Config extends Validated(Configuration) {
     }
   }
 
+  get exclude() {
+    return new Exclude(this.value.exclude);
+  }
+
+  get categories() {
+    return this.value.categories.map(
+      (category) => new Category(category, this),
+    );
+  }
+
   get empty() {
     for (const category of this.categories) {
       if (category.version) return false;
@@ -55,9 +64,5 @@ export class Config extends Validated(Configuration) {
     return true;
   }
 
-  excludes(change: Changeset) {
-    const exclude = new Exclude(this.exclude ?? {});
-
-    return exclude.excludes(change);
-  }
+  excludes = this.exclude.excludes;
 }

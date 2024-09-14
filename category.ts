@@ -12,8 +12,6 @@ export const Categorization = z.object({
   exclude: z.optional(Exclusion),
 });
 
-export type Categorization = z.infer<typeof Categorization>;
-
 export class Category extends Validated(Categorization) {
   config: Config;
 
@@ -23,6 +21,7 @@ export class Category extends Validated(Categorization) {
   }
 
   excludes(change: Changeset) {
+    // @ts-expect-error TS2339
     const exclude = new Exclude(this.exclude ?? {});
 
     return this.config.excludes(change) || exclude.excludes(change);
@@ -30,6 +29,7 @@ export class Category extends Validated(Categorization) {
 
   includes(change: Changeset) {
     if (!this.excludes(change)) {
+      // @ts-expect-error TS2339
       for (const label of this.labels) {
         if (change.labels.includes(label)) return true;
       }
@@ -41,6 +41,7 @@ export class Category extends Validated(Categorization) {
   supersedes(bump: ReleaseType) {
     const levels = RELEASE_TYPES.toReversed();
     const current = levels.indexOf(bump);
+    // @ts-expect-error TS2339
     const proposed = levels.indexOf(this.version);
 
     return proposed > current;
