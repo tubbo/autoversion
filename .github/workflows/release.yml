@@ -20,12 +20,12 @@ jobs:
           path: dist/
       - uses: ./
         id: version
-      - if: steps.version.outputs.bumped == "true"
+      - if: steps.version.outputs.bumped == 'true'
         uses: softprops/action-gh-release@v2
         with:
           tag_name: v${{ steps.version.outputs.next }}
           generate_release_notes: true
-      - if: steps.version.outputs.bumped == "true"
+      - if: steps.version.outputs.bumped == 'true'
         uses: JasonEtco/build-and-tag-action@v2
         with:
           tag_name: v${{ steps.version.outputs.next }}
