@@ -20,3 +20,6 @@ outputs:
 runs:
   using: "node20"
   main: "action/dist/index.js"
+branding:
+  icon: crosshair
+  color: purple
