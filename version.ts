@@ -24,7 +24,7 @@ export class Version {
     let bump: ReleaseType;
 
     for (const change of this.changes) {
-      for (const category of this.config.categories) {
+      for (const category of this.config.levels) {
         if (category.includes(change) && category.supersedes(bump)) {
           bump = category.version;
         }

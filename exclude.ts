@@ -9,10 +9,12 @@ export const Exclusion = z.object({
 
 export class Exclude extends Validated(Exclusion) {
   excludes({ author, labels }: Changeset) {
-    if (this.value.authors?.includes(author)) return true;
+    // @ts-expect-error TS2339
+    if (this.authors?.includes(author)) return true;
 
     for (const label of labels) {
-      if (this.value.labels?.includes(label)) return true;
+      // @ts-expect-error TS2339
+      if (this.labels?.includes(label)) return true;
     }
 
     return false;

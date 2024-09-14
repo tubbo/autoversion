@@ -5,6 +5,7 @@ import { load } from "js-yaml";
 import { join } from "path";
 import { Exclude, Exclusion } from "./exclude.js";
 import { Category, Categorization } from "./category.js";
+import { Changeset } from "./service.js";
 
 const Configuration = z.object({
   exclude: z.optional(Exclusion),
@@ -46,23 +47,23 @@ export class Config extends Validated(Configuration) {
     }
   }
 
-  get exclude() {
-    return new Exclude(this.value.exclude);
-  }
-
-  get categories() {
-    return this.value.categories.map(
-      (category) => new Category(category, this),
-    );
+  get levels() {
+    // @ts-expect-error TS2339
+    return this.categories.map((category) => new Category(category, this));
   }
 
   get empty() {
-    for (const category of this.categories) {
+    for (const category of this.levels) {
       if (category.version) return false;
     }
 
     return true;
   }
 
-  excludes = this.exclude.excludes;
+  excludes(change: Changeset) {
+    // @ts-expect-error TS2339
+    const exclude = new Exclude(this.exclude ?? {});
+
+    return exclude.excludes(change);
+  }
 }
