@@ -37,7 +37,7 @@
     "@actions/github": "^6.0.0",
     "js-yaml": "^4.1.0",
     "semver": "^7.6.3",
-    "validated-extendable": "^7.2.13",
+    "validated-extendable": "^7.3.0",
     "zod": "^3.23.8"
   }
 }

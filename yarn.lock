@@ -1743,10 +1743,10 @@ uuid@^8.3.2:
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.3.2.tgz#80d5b5ced271bb9af6c445f21a1a04c606cefbe2"
   integrity sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==
 
-validated-extendable@^7.2.13:
-  version "7.2.13"
-  resolved "https://registry.yarnpkg.com/validated-extendable/-/validated-extendable-7.2.13.tgz#5ab55e344f3e5477649337b42a0a804d6b6f0ba6"
-  integrity sha512-E8g949p2GO5t93Vryn/KMgZXbxKF8uA5EZA6AWFXzd+qusvqqsnIBPuodhl9Hxkx6AJayghjkKOMQ0OdOp7xDA==
+validated-extendable@^7.3.0:
+  version "7.3.0"
+  resolved "https://registry.yarnpkg.com/validated-extendable/-/validated-extendable-7.3.0.tgz#5b459a944428e0e2c4493d3c09c03df2a687ac8d"
+  integrity sha512-OphJYKkDLq6OwVerzszD22+x9HaTXG3yZOSGX5133zh7xE0K8Ol0P6aFnAJAEQ0OerIafFGbcCj6FoXj/XWCDQ==
 
 vfile-message@^4.0.0:
   version "4.0.2"
