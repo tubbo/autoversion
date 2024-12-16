@@ -38,6 +38,6 @@
     "js-yaml": "^4.1.0",
     "semver": "^7.6.3",
     "validated-extendable": "^7.2.13",
-    "zod": "^3.23.8"
+    "zod": "^3.24.1"
   }
 }
